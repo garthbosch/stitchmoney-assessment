@@ -1,0 +1,1 @@
+# stitchmoney-assessment
