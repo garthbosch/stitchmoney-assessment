@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="API Todo List Test Suite">
+
+    <parameter name="testType" value="API"/>
+    <!--DATA CLEANUP-->
+    <test name="Delete all items from the list" enabled="true">
+        <parameter name="requestMethod" value="CLEANUP"/>
+        <parameter name="urlPath" value="del-todos"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="cleanUpData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--POSITIVE TESTS-->
+    <test name="Add inprogress status item to list" enabled="true">
+        <parameter name="requestMethod" value="POST"/>
+        <parameter name="urlPath" value="todos"/>
+        <parameter name="todoItem" value="ADD inprogress status test"/>
+        <parameter name="status" value="inprogress"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add done status item to list" enabled="true">
+        <parameter name="requestMethod" value="POST"/>
+        <parameter name="urlPath" value="todos"/>
+        <parameter name="todoItem" value="ADD done status test"/>
+        <parameter name="status" value="done"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Get list items from todo" enabled="true">
+        <parameter name="requestMethod" value="GET"/>
+        <parameter name="urlPath" value="todos"/>
+        <parameter name="todoItem" value="GET test"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Edit existing item" enabled="true">
+        <parameter name="requestMethod" value="PATCH"/>
+        <parameter name="urlPath" value="edit-todos"/>
+        <parameter name="todoItem" value="ADD test to edit"/>
+        <parameter name="editTodoItem" value="Edited ADD test"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Delete inprogress status item from list" enabled="true">
+        <parameter name="requestMethod" value="DELETE"/>
+        <parameter name="urlPath" value="del-todos"/>
+        <parameter name="todoItem" value="DELETE test"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--NEGATIVE TESTS-->
+    <test name="Add item to list which already exist" enabled="true">
+        <parameter name="requestMethod" value="POST"/>
+        <parameter name="urlPath" value="todos"/>
+        <parameter name="todoItem" value="ADD negative test for existing item"/>
+        <parameter name="errorMessage" value="The item is already added"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="addExistingItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add item to list with more than 100 characters" enabled="true">
+        <parameter name="requestMethod" value="POST"/>
+        <parameter name="urlPath" value="todos"/>
+        <parameter name="todoItem"
+                   value="12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901"/>
+        <parameter name="isNegativeTest" value="true"/>
+        <parameter name="errorMessage" value="The item is contains more than 100 characters"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Delete completed (done status) item from list" enabled="true">
+        <parameter name="requestMethod" value="DELETE"/>
+        <parameter name="urlPath" value="todos"/>
+        <parameter name="todoItem" value="DELETE negative test for item in done status "/>
+        <parameter name="isNegativeTest" value="true"/>
+        <parameter name="status" value="done"/>
+        <parameter name="errorMessage" value="The item is in done status and cannot be deleted"/>
+        <classes>
+            <class name="gfbtests.api.TodoAPITest">
+                <methods>
+                    <include name="runTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

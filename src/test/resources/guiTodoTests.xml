@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="GUI Todo List Test Suite">
+
+    <parameter name="testType" value="GUI"/>
+
+    <test name="Delete all items from the list" enabled="true">
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="deleteAllTodoItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--POSITIVE TESTS-->
+    <test name="Add inprogress status item to list" enabled="true">
+        <parameter name="todoItem" value="ADD inprogress status test - via GUI"/>
+        <parameter name="status" value="inprogress"/>
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="addTodoItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add done status item to list" enabled="true">
+        <parameter name="todoItem" value="ADD done status test"/>
+        <parameter name="status" value="done"/>
+        <parameter name="elementAttribute" value="style"/>
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="addTodoItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Delete inprogress status item from list" enabled="true">
+        <parameter name="todoItem" value="DELETE inprogress status test"/>
+        <parameter name="status" value="inprogress"/>
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="deleteTodoItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--NEGATIVE TESTS-->
+    <test name="Delete done status item from list" enabled="true">
+        <parameter name="todoItem" value="DELETE done status test"/>
+        <parameter name="status" value="done"/>
+        <parameter name="errorMessage" value="The item is in done status and cannot be deleted"/>
+        <parameter name="isNegativeTest" value="true"/>
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="deleteTodoItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add item to list with more than 100 characters" enabled="true">
+        <parameter name="todoItem" value="12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901GUI"/>
+        <parameter name="status" value="inprogress"/>
+        <parameter name="errorMessage" value="The item is contains more than 100 characters"/>
+        <parameter name="isNegativeTest" value="true"/>
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="addTodoItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add item to list which already exist" enabled="true">
+        <parameter name="todoItem" value="ADD negative test for existing item"/>
+        <parameter name="status" value="inprogress"/>
+        <parameter name="errorMessage" value="The item is already added"/>
+        <parameter name="isNegativeTest" value="true"/>
+        <classes>
+            <class name="gfbtests.gui.TodoGUITest">
+                <methods>
+                    <include name="addExistingItemTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
