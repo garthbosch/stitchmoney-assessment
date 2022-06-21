@@ -1,9 +1,7 @@
 package gfbtests.reportsandvalidations;
 
 import com.google.gson.JsonObject;
-import gfb.models.SearchResultsDetails;
 import gfb.utils.FileHelper;
-import gfb.utils.SeleniumWebDriverUtils;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.openqa.selenium.OutputType;
@@ -18,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public class ValidateTestsAndReport {

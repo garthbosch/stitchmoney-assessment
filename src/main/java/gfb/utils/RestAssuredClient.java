@@ -9,8 +9,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.FilterableRequestSpecification;
 import io.restassured.specification.FilterableResponseSpecification;
 import io.restassured.specification.RequestSpecification;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import java.util.Map;
 
@@ -70,7 +68,6 @@ public class RestAssuredClient {
     }
 
     public static class RestAssuredRequestFilter implements Filter {
-        private final Log log = LogFactory.getLog(RestAssuredRequestFilter.class);
 
         @Override
         public Response filter(FilterableRequestSpecification requestSpec, FilterableResponseSpecification responseSpec,

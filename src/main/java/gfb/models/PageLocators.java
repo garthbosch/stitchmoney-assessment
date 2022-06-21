@@ -10,8 +10,7 @@ public enum PageLocators {
     SUBMIT_BUTTON("//button[@type='submit']", PageLocators.XPATH),
     TODO_ITEM_LABEL("//span[normalize-space()='%s']", PageLocators.XPATH),
     DONE_BUTTON("%s/following-sibling::div/button[@class='btn btn-outline-success']", PageLocators.XPATH),
-    DELETE_BUTTON("%s/following-sibling::div/button[@class='btn btn-outline-danger']", PageLocators.XPATH)
-    ;
+    DELETE_BUTTON("%s/following-sibling::div/button[@class='btn btn-outline-danger']", PageLocators.XPATH);
     //multiple usage of same strings
     private static final String XPATH = "xpath";
     private static final String ID = "id";

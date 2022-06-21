@@ -81,8 +81,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
+            <version>1.18.24</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
@@ -105,7 +104,5 @@
             <artifactId>allure-testng</artifactId>
             <version>2.18.1</version>
         </dependency>
-
     </dependencies>
-
 </project>

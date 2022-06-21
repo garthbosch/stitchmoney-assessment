@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -82,14 +81,6 @@ public class SeleniumWebDriverUtils {
 
         try {
             WebDriverManager.getInstance(FIREFOX).setup();
-
-//            firefoxOptions.setCapability(CapabilityType.OVERLAPPING_CHECK_DISABLED, false);
-//            firefoxOptions.setCapability(CapabilityType.ELEMENT_SCROLL_BEHAVIOR, true);
-//            firefoxOptions.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
-//            firefoxOptions.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-//            firefoxOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-//            firefoxOptions.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-//            firefoxOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, false);
             firefoxOptions.setCapability("idle-timeout", 300000);
             firefoxOptions.addArguments("test-type");
             firefoxOptions.addArguments("--ignore-certificate-errors");
@@ -113,14 +104,6 @@ public class SeleniumWebDriverUtils {
 
         try {
             WebDriverManager.getInstance(CHROME).setup();
-
-//            chromeOptions.setCapability(CapabilityType.OVERLAPPING_CHECK_DISABLED, false);
-//            chromeOptions.setCapability(CapabilityType.ELEMENT_SCROLL_BEHAVIOR, true);
-//            chromeOptions.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
-//            chromeOptions.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-//            chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-//            chromeOptions.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-//            chromeOptions.setCapability(CapabilityType.SUPPORTS_APPLICATION_CACHE, false);
             chromeOptions.setCapability("idle-timeout", 300000);
             chromeOptions.addArguments("test-type");
             chromeOptions.addArguments("--ignore-certificate-errors");
@@ -374,37 +357,37 @@ public class SeleniumWebDriverUtils {
     public boolean isElementInDOM(String element, String locatorType) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         boolean isElementPresent = false;
-            switch (locatorType.toLowerCase()) {
-                case XPATH:
-                    isElementPresent = !driver.findElements(By.xpath(element)).isEmpty();
-                    break;
+        switch (locatorType.toLowerCase()) {
+            case XPATH:
+                isElementPresent = !driver.findElements(By.xpath(element)).isEmpty();
+                break;
 
-                case ID:
-                    isElementPresent = !driver.findElements(By.id(element)).isEmpty();
-                    break;
+            case ID:
+                isElementPresent = !driver.findElements(By.id(element)).isEmpty();
+                break;
 
-                case LINK_TEXT:
-                    isElementPresent = !driver.findElements(By.linkText(element)).isEmpty();
-                    break;
+            case LINK_TEXT:
+                isElementPresent = !driver.findElements(By.linkText(element)).isEmpty();
+                break;
 
-                case CSS:
-                    isElementPresent = !driver.findElements(By.cssSelector(element)).isEmpty();
-                    break;
+            case CSS:
+                isElementPresent = !driver.findElements(By.cssSelector(element)).isEmpty();
+                break;
 
-                case CLASSNAME:
-                    isElementPresent = !driver.findElements(By.className(element)).isEmpty();
-                    break;
+            case CLASSNAME:
+                isElementPresent = !driver.findElements(By.className(element)).isEmpty();
+                break;
 
-                case NAME:
-                    isElementPresent = !driver.findElements(By.name(element)).isEmpty();
-                    break;
+            case NAME:
+                isElementPresent = !driver.findElements(By.name(element)).isEmpty();
+                break;
 
-                case PARTIAL_LINK_TEXT:
-                    isElementPresent = !driver.findElements(By.partialLinkText(element)).isEmpty();
-                    break;
+            case PARTIAL_LINK_TEXT:
+                isElementPresent = !driver.findElements(By.partialLinkText(element)).isEmpty();
+                break;
 
-                default:
-                    logNoPropertyError();
+            default:
+                logNoPropertyError();
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(waitTimeOut));
         return isElementPresent;

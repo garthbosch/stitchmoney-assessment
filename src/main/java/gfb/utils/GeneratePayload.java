@@ -1,14 +1,16 @@
 package gfb.utils;
 
-import gfb.models.ResponseData;
 import org.json.JSONObject;
 
 import java.security.SecureRandom;
-import java.util.List;
 
 public class GeneratePayload {
 
     private static SecureRandom secureRandom = new SecureRandom();
+
+    private GeneratePayload() {
+        throw new IllegalStateException("GeneratePayload class");
+    }
 
     public static JSONObject setAddPayload(String todoItem, String status, String id) {
         JSONObject addPayload = new JSONObject();

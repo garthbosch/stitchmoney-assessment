@@ -2,25 +2,18 @@ package gfb.actions;
 
 import gfb.models.PageLocators;
 import gfb.utils.SeleniumWebDriverUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
 import java.util.List;
-import java.util.Map;
 
 public class GUIActions extends SoftAssert {
 
-    private static final String GOOGLE = "google";
     private SeleniumWebDriverUtils driver;
-    private Map<String, String> configMan;
-    private String searchEngine;
 
-    public GUIActions(gfb.utils.SeleniumWebDriverUtils driver, Map<String, String> configMan) {
+    public GUIActions(SeleniumWebDriverUtils driver) {
         this.driver = driver;
-        this.configMan = configMan;
     }
 
     public void addTodoItem(String todoItem) {
@@ -86,7 +79,7 @@ public class GUIActions extends SoftAssert {
             String element = String.format(PageLocators.DELETE_BUTTON.getElement(), "/");
             String elementType = String.format(PageLocators.DELETE_BUTTON.getElementType(), "/");
             List<WebElement> deleteButtons = driver.findElements(element, elementType);
-            for (int i = 0; i < deleteButtons.size(); i ++) {
+            for (int i = 0; i < deleteButtons.size(); i++) {
                 driver.clickElement(element, elementType);
             }
         } catch (WebDriverException e) {

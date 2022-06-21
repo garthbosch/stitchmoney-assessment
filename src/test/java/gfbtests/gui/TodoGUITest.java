@@ -26,7 +26,7 @@ public class TodoGUITest extends BaseTest {
 
     @Test
     public void addTodoItemTest() {
-        guiActions = new GUIActions(driver, configMan);
+        guiActions = new GUIActions(driver);
         guiActions.addTodoItem(todoItem);
         if (status.equalsIgnoreCase("done")) {
             guiActions.markItemDone(todoItem);
@@ -49,7 +49,7 @@ public class TodoGUITest extends BaseTest {
 
     @Test
     public void addExistingItemTest() {
-        guiActions = new GUIActions(driver, configMan);
+        guiActions = new GUIActions(driver);
         guiActions.addTodoItem(todoItem);
         guiActions.addTodoItem(todoItem);
         boolean actualResult = guiActions.isDuplicatesTodoItems(todoItem);
@@ -60,7 +60,7 @@ public class TodoGUITest extends BaseTest {
 
     @Test
     public void deleteTodoItemTest() throws InterruptedException {
-        guiActions = new GUIActions(driver, configMan);
+        guiActions = new GUIActions(driver);
         guiActions.addTodoItem(todoItem);
         if (status.equalsIgnoreCase("done")) {
             guiActions.markItemDone(todoItem);
@@ -75,7 +75,7 @@ public class TodoGUITest extends BaseTest {
 
     @Test
     public void deleteAllTodoItemTest() throws InterruptedException {
-        guiActions = new GUIActions(driver, configMan);
+        guiActions = new GUIActions(driver);
         guiActions.deleteAllItems();
     }
 

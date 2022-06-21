@@ -1,13 +1,10 @@
 package gfbtests;
 
 import gfb.models.RestAssuredData;
-import gfbtests.reportsandvalidations.ValidateTestsAndReport;
 import gfb.utils.FileHelper;
 import gfb.utils.RestAssuredClient;
 import gfb.utils.SeleniumWebDriverUtils;
-import io.restassured.response.Response;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
+import gfbtests.reportsandvalidations.ValidateTestsAndReport;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;

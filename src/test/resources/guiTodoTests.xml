@@ -69,7 +69,8 @@
     </test>
 
     <test name="Add item to list with more than 100 characters" enabled="true">
-        <parameter name="todoItem" value="12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901GUI"/>
+        <parameter name="todoItem"
+                   value="12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901GUI"/>
         <parameter name="status" value="inprogress"/>
         <parameter name="errorMessage" value="The item is contains more than 100 characters"/>
         <parameter name="isNegativeTest" value="true"/>
