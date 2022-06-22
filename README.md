@@ -69,6 +69,7 @@
         |   |   |_apiTodoTests.xml
         |   |   |_guiTodoTests.xml
         |   |   |   |...
+        |_locust_report.html
         |_locustfile.py
         |_pom.xml
         |_README.md
